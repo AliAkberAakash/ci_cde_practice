@@ -1,6 +1,22 @@
 name: learn-github-actions
 run-name: Run flutter analyze
-on: [push]
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+    branches:
+      - 'main'
+
+    paths-ignore:
+      - '**.md'
+      - 'doc/**'
+      - '.git/'
+      - '.vscode/'
+
 jobs:
   run-flutter-analyze:
     runs-on: ubuntu-latest
